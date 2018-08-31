@@ -26,6 +26,10 @@ namespace DatingApp
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+
+            services.AddCors();
+
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
@@ -49,6 +53,9 @@ namespace DatingApp
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            app.UseCors(x=>x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+
 
             app.UseMvc(routes =>
             {

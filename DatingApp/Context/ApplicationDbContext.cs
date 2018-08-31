@@ -11,8 +11,11 @@ namespace DatingApp.Context
     {
         public DbSet<TestValues> TestValueses { get; set; }
 
+        public DbSet<User> Users { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
+
         }
 
 

@@ -11,7 +11,8 @@ namespace DatingApp.Controllers
 {
 
     [Route("api/[controller]")]
-    public class TestValuesController : Controller
+    [ApiController]
+    public class TestValuesController :ControllerBase
     {
 
         private readonly ApplicationDbContext _context;
@@ -88,15 +89,6 @@ namespace DatingApp.Controllers
 
 
 
-        protected override void Dispose(bool disposing)
-        {
-
-            if (disposing)
-            {
-                _context.Dispose();
-            }
-
-            base.Dispose(disposing);
-        }
+        
     }
 }

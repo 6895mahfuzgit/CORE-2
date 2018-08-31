@@ -1,13 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DatingApp.Controllers
 {
+    [Authorize]
+
     [Route("api/[controller]")]
-    public class SampleDataController : Controller
+    [ApiController]
+    public class SampleDataController : ControllerBase
     {
         private static string[] Summaries = new[]
         {

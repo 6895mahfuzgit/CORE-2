@@ -13,6 +13,7 @@ namespace DatingApp.Dtos
 
 
         [Required]
+        [MinLength(4,ErrorMessage ="Atleast 4 char")]
         public string Password { get; set; }
 
     }

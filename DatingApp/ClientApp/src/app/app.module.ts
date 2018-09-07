@@ -6,21 +6,26 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
+
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { TestvaluesComponent } from './testvalues/testvalues.component';
 
+
+
+import { AuthService } from './_services/auth.service';
+import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
-    HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    TestvaluesComponent,
+    HomeComponent,
+    RegisterComponent,
+    
     
   ],
   imports: [
@@ -33,7 +38,11 @@ import { TestvaluesComponent } from './testvalues/testvalues.component';
       { path: 'fetch-data', component: FetchDataComponent },
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService 
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+}

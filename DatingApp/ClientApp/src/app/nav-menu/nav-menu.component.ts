@@ -1,18 +1,44 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../_services/auth.service';
 
 @Component({
   selector: 'app-nav-menu',
   templateUrl: './nav-menu.component.html',
   styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent {
-  isExpanded = false;
+export class NavMenuComponent implements OnInit {
 
-  collapse() {
-    this.isExpanded = false;
+  model: any = {};
+
+  constructor(private authSerices: AuthService) {
+
   }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
+  ngOnInit() { }
+
+
+  login() {
+
+    this.authSerices.login(this.model).subscribe(next => { console.log("loggged in succcessfully"); }
+      , error => { console.log("loggged in Failed"); });
+
   }
+
+
+  loggedIn() {
+    var user = localStorage.getItem('token');
+
+    return !!user;
+
+  }
+
+
+  logout() {
+
+    localStorage.removeItem('token');
+    console.log("Logout");
+
+  }
+
+
 }

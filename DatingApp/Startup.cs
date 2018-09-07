@@ -1,10 +1,14 @@
+using System.Net;
 using System.Text;
 using DatingApp.Context;
+using DatingApp.Helpers;
 using DatingApp.Interfaces;
 using DatingApp.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
@@ -27,7 +31,7 @@ namespace DatingApp
         public void ConfigureServices(IServiceCollection services)
         {
 
-          var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
+            var key = Encoding.ASCII.GetBytes(Configuration.GetSection("AppSettings:Token").Value);
 
 
 
@@ -74,7 +78,29 @@ namespace DatingApp
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                //app.UseExceptionHandler("/Error");
+
+
+                //Global Error Handaling Code
+                app.UseExceptionHandler(builder =>
+                {
+
+                    builder.Run(async context =>
+                    {
+                        context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
+
+                        var error = context.Features.Get<IExceptionHandlerFeature>();
+                        if (error != null)
+                        {
+                            context.Response.AddApplicationError(error.Error.Message);
+                            await context.Response.WriteAsync(error.Error.Message);
+                        }
+
+
+                    });
+                });
+
+
             }
 
             app.UseStaticFiles();

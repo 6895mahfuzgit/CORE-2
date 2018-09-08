@@ -23,7 +23,7 @@
 
     <div *ngIf="loggedIn()" class="dropdown navbar-right" style="margin-top: 8px;">
       <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1">
-        Welcome User
+        Welcome {{authSerices.decodeToken?.unique_name | titlecase}}
         <span class="caret"></span>
       </button>
       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

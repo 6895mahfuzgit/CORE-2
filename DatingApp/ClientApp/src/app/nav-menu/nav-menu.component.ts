@@ -32,9 +32,7 @@ export class NavMenuComponent implements OnInit {
 
 
   loggedIn() {
-    var user = localStorage.getItem('token');
-
-    return !!user;
+    return this.authSerices.loggedIn();
 
   }
 

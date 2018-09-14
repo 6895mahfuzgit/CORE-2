@@ -16,6 +16,10 @@ import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { AlertifyService } from './_services/alertify.service';
+import { ListsComponent } from '../../lists/lists.component';
+import { MemberListComponent } from '../../member-list/member-list.component';
+import { MessagesComponent } from '../../messages/messages.component';
+import { appRoutes } from './routes';
 
 
 
@@ -27,6 +31,9 @@ import { AlertifyService } from './_services/alertify.service';
     FetchDataComponent,
     HomeComponent,
     RegisterComponent,
+    ListsComponent,
+    MemberListComponent,
+    MessagesComponent
     
     
   ],
@@ -35,11 +42,7 @@ import { AlertifyService } from './_services/alertify.service';
     HttpClientModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     AuthService,

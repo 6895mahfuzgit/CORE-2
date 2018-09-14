@@ -12,5 +12,5 @@ export const appRoutes: Routes = [
   { path: 'lists', component: ListsComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'members', component: MemberListComponent },
-  { path: '**', redirectTo: 'home', pathMatch:'full' },
+  { path: '**', redirectTo: 'home', pathMatch:'full' }
 ];

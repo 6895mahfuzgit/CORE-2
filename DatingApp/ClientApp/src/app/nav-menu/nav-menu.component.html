@@ -8,10 +8,10 @@
   <div id="navbar" class="navbar-collapse collapse" >
 
     <ul style="display:flex;list-style:none; align-content: center;" class="navbar-nav navbar-left">
-      <li class="navbar-brand"> <a style="font-size: larger;color: white;" href="#"><b>Dating App</b></a></li>
-      <li *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px; "> <a style="font-size: larger;color: white;" class="navbar-link " href="#">Matches</a></li>
-      <li  *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px;"> <a style="font-size: larger;color: white;" class="navbar-link " href="#">Lists</a></li>
-      <li  *ngIf="loggedIn()"  class="nav-item " style="margin-top: 19px;"> <a style="font-size: larger;color: white;" class="navbar-link " href="#">Messages</a></li>
+      <li class="navbar-brand"> <a style="font-size: larger;color: white;" routerLinkActive="active" [routerLink]="['/home']" ><b>Dating App</b></a></li>
+      <li *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px; "   routerLinkActive="active"    > <a style="font-size: larger;color: white;" class="navbar-link "  [routerLink]="['/members']">Matches</a></li>
+      <li  *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px;"  routerLinkActive="active" > <a style="font-size: larger;color: white;" class="navbar-link " [routerLink]="['/lists']" >Lists</a></li>
+      <li  *ngIf="loggedIn()"  class="nav-item " style="margin-top: 19px;" routerLinkAtive="active"  > <a style="font-size: larger;color: white;" class="navbar-link " [routerLink]="['/messges']" >Messages</a></li>
       <li *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px;"> <a style="font-size: larger;color: white;" class="navbar-link " (click)="logout()">Logout</a></li>
     </ul>
 

@@ -20,6 +20,7 @@ import { ListsComponent } from '../../lists/lists.component';
 import { MemberListComponent } from '../../member-list/member-list.component';
 import { MessagesComponent } from '../../messages/messages.component';
 import { appRoutes } from './routes';
+import { AuthGuard } from './_guard/auth.guard';
 
 
 
@@ -47,6 +48,7 @@ import { appRoutes } from './routes';
   providers: [
     AuthService,
     AlertifyService,
+    AuthGuard,
     
   ],
   bootstrap: [AppComponent]

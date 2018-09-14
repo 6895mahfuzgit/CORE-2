@@ -4,13 +4,21 @@ import { MemberListComponent } from "../../member-list/member-list.component";
 import { ListsComponent } from "../../lists/lists.component";
 import { RegisterComponent } from "./register/register.component";
 import { MessagesComponent } from "../../messages/messages.component";
+import { AuthGuard } from "./_guard/auth.guard";
 
 
 export const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'messages', component: MessagesComponent },
-  { path: 'lists', component: ListsComponent },
+  {
+    path: '',
+    runGuardsAndResolvers: 'always',
+    canActivate: [AuthGuard],
+    children: [
+      { path: 'messages', component: MessagesComponent },
+      { path: 'lists', component: ListsComponent },
+      { path: 'members', component: MemberListComponent },
+    ]
+  },
   { path: 'register', component: RegisterComponent },
-  { path: 'members', component: MemberListComponent },
-  { path: '**', redirectTo: 'home', pathMatch:'full' }
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];

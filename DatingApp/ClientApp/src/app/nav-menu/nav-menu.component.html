@@ -11,7 +11,7 @@
       <li class="navbar-brand"> <a style="font-size: larger;color: white;" routerLinkActive="active" [routerLink]="['/home']" ><b>Dating App</b></a></li>
       <li *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px; "   routerLinkActive="active"    > <a style="font-size: larger;color: white;" class="navbar-link "  [routerLink]="['/members']">Matches</a></li>
       <li  *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px;"  routerLinkActive="active" > <a style="font-size: larger;color: white;" class="navbar-link " [routerLink]="['/lists']" >Lists</a></li>
-      <li  *ngIf="loggedIn()"  class="nav-item " style="margin-top: 19px;" routerLinkAtive="active"  > <a style="font-size: larger;color: white;" class="navbar-link " [routerLink]="['/messges']" >Messages</a></li>
+      <li  *ngIf="loggedIn()"  class="nav-item " style="margin-top: 19px;" routerLinkAtive="active"  > <a style="font-size: larger;color: white;" class="navbar-link " [routerLink]="['/messages']" >Messages</a></li>
       <li *ngIf="loggedIn()" class="nav-item " style="margin-top: 19px;"> <a style="font-size: larger;color: white;" class="navbar-link " (click)="logout()">Logout</a></li>
     </ul>
 

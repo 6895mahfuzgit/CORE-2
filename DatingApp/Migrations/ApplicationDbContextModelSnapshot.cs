@@ -33,7 +33,7 @@ namespace DatingApp.Migrations
 
                     b.Property<string>("Url");
 
-                    b.Property<int>("UserId");
+                    b.Property<int?>("UserId");
 
                     b.HasKey("PhotoId");
 
@@ -65,9 +65,9 @@ namespace DatingApp.Migrations
 
                     b.Property<string>("Country");
 
-                    b.Property<DateTime>("Created");
+                    b.Property<DateTime?>("Created");
 
-                    b.Property<DateTime>("DateOfBirth");
+                    b.Property<DateTime?>("DateOfBirth");
 
                     b.Property<string>("Gender");
 
@@ -75,7 +75,7 @@ namespace DatingApp.Migrations
 
                     b.Property<string>("Introduction");
 
-                    b.Property<DateTime>("LastActive");
+                    b.Property<DateTime?>("LastActive");
 
                     b.Property<string>("LookingFor");
 
@@ -96,8 +96,7 @@ namespace DatingApp.Migrations
                 {
                     b.HasOne("DatingApp.Models.User", "User")
                         .WithMany("Photos")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

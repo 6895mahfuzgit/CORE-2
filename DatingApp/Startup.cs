@@ -3,6 +3,7 @@ using System.Text;
 using DatingApp.Context;
 using DatingApp.Helpers;
 using DatingApp.Interfaces;
+using DatingApp.Models;
 using DatingApp.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -39,6 +40,8 @@ namespace DatingApp
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
+            services.AddTransient<SeedData>();
+
             services.AddCors();
 
             services.AddScoped<IAuthRepository, AuthRepository>();
@@ -70,7 +73,7 @@ namespace DatingApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedData seed)
         {
             if (env.IsDevelopment())
             {
@@ -105,6 +108,8 @@ namespace DatingApp
 
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
+
+            //seed.SeedUsers();
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 

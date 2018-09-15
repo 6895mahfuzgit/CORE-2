@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatingApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180831185444_AddedUserModel")]
-    partial class AddedUserModel
+    [Migration("20180915061435_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,29 @@ namespace DatingApp.Migrations
                 .HasAnnotation("ProductVersion", "2.1.0-rc1-32029")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("DatingApp.Models.Photo", b =>
+                {
+                    b.Property<int>("PhotoId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DateAdded");
+
+                    b.Property<string>("Description");
+
+                    b.Property<bool>("IsMain");
+
+                    b.Property<string>("Url");
+
+                    b.Property<int?>("UserId");
+
+                    b.HasKey("PhotoId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Photos");
+                });
 
             modelBuilder.Entity("DatingApp.Models.TestValues", b =>
                 {
@@ -40,15 +63,42 @@ namespace DatingApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("City");
+
+                    b.Property<string>("Country");
+
+                    b.Property<DateTime?>("Created");
+
+                    b.Property<DateTime?>("DateOfBirth");
+
+                    b.Property<string>("Gender");
+
+                    b.Property<string>("Interests");
+
+                    b.Property<string>("Introduction");
+
+                    b.Property<DateTime?>("LastActive");
+
+                    b.Property<string>("LookingFor");
+
                     b.Property<byte[]>("Password");
 
                     b.Property<byte[]>("PasswordSalt");
 
                     b.Property<string>("UserName");
 
+                    b.Property<string>("knownAs");
+
                     b.HasKey("UserId");
 
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("DatingApp.Models.Photo", b =>
+                {
+                    b.HasOne("DatingApp.Models.User", "User")
+                        .WithMany("Photos")
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }

@@ -40,11 +40,12 @@ namespace DatingApp
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
-            services.AddTransient<SeedData>();
+            //services.AddTransient<SeedData>();
 
             services.AddCors();
 
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IDatingRepository, DatingRepositoty>();
 
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddJwtBearer(Options =>
@@ -63,7 +64,11 @@ namespace DatingApp
 
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                             .AddJsonOptions(opt=> {
+
+                                 opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                             }) ;
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
@@ -73,7 +78,7 @@ namespace DatingApp
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedData seed)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {

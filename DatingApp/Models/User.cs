@@ -14,7 +14,7 @@ namespace DatingApp.Models
         [Key]
         public int UserId { get; set; }
 
-        public string UserName { get; set; }
+        public string Username { get; set; }
 
         public byte[] Password { get; set; }
 

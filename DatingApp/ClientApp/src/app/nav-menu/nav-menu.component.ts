@@ -44,8 +44,6 @@ export class NavMenuComponent implements OnInit {
 
     localStorage.removeItem('token');
     this.alertifyService.message("Logout Successfully");
-
-
     this.router.navigate(['/home']);
     //console.log("Logout");
 

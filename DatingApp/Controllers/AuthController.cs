@@ -5,13 +5,14 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using DatingApp.Dtos;
+using DatingApp.API.Dtos;
+
 using DatingApp.Helpers;
 using DatingApp.Interfaces;
 using DatingApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
+
 
 namespace DatingApp.Controllers
 {
@@ -36,12 +37,12 @@ namespace DatingApp.Controllers
 
         [HttpPost("register")]
 
-        public async Task<IActionResult> Register([FromBody]UserForRegisterDto registerDto)
+        public async Task<IActionResult> Register([FromBody]UserForRegidterDto registerDto)
         {
 
 
 
-            if (await _authRepository.UserExists(registerDto.UserName))
+            if (await _authRepository.UserExists(registerDto.Username))
             {
                 ModelState.AddModelError("UserName", "User Name Already Exists");
             }
@@ -49,12 +50,12 @@ namespace DatingApp.Controllers
 
 
 
-            registerDto.UserName = registerDto.UserName.ToLower();
+            registerDto.Username = registerDto.Username.ToLower();
 
 
             var userToCreate = new User
             {
-                UserName = registerDto.UserName
+                Username = registerDto.Username
             };
 
 
@@ -71,7 +72,7 @@ namespace DatingApp.Controllers
 
 
 
-            var userLogin = await _authRepository.Login(userForLogin.UserName.ToLower(), userForLogin.Password);
+            var userLogin = await _authRepository.Login(userForLogin.Username.ToLower(), userForLogin.Password);
 
 
             if (userLogin == null)
@@ -81,7 +82,7 @@ namespace DatingApp.Controllers
 
 
 
-            var tokenString = JwtTokenHelper.GetTokenByUserIdAndName(userLogin.UserId.ToString(), userLogin.UserName, _configuration.GetSection("AppSettings:Token").Value);
+            var tokenString = JwtTokenHelper.GetTokenByUserIdAndName(userLogin.UserId.ToString(), userLogin.Username, _configuration.GetSection("AppSettings:Token").Value);
 
 
             return Ok(new { tokenString });

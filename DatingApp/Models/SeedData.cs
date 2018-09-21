@@ -34,7 +34,7 @@ namespace DatingApp.Models
 
                 user.Password = passwordHash;
                 user.PasswordSalt = passwordSalt;
-                user.UserName = user.UserName.ToLower();
+                user.Username = user.Username.ToLower();
 
                 _context.Users.Add(user);
             }

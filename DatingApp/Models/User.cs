@@ -12,7 +12,7 @@ namespace DatingApp.Models
     public class User
     {
         [Key]
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         public string Username { get; set; }
 
@@ -22,7 +22,7 @@ namespace DatingApp.Models
 
 
         public string Gender { get; set; }
-        public DateTime? DateOfBirth { get; set; }
+        public DateTime DateOfBirth { get; set; }
 
         public string knownAs { get; set; }
 

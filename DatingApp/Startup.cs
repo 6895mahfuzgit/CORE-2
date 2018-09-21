@@ -1,5 +1,6 @@
 using System.Net;
 using System.Text;
+using AutoMapper;
 using DatingApp.Context;
 using DatingApp.Helpers;
 using DatingApp.Interfaces;
@@ -40,7 +41,9 @@ namespace DatingApp
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
 
-            //services.AddTransient<SeedData>();
+           services.AddTransient<SeedData>();
+
+            services.AddAutoMapper();// for automapper
 
             services.AddCors();
 
@@ -114,7 +117,7 @@ namespace DatingApp
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            //seed.SeedUsers();
+//            seed.SeedUsers();
 
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 

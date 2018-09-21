@@ -10,7 +10,7 @@ namespace DatingApp.Models
     {
 
         [Key]
-        public int PhotoId { get; set; }
+        public int Id { get; set; }
 
 
         public string Url { get; set; }

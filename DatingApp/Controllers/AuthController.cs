@@ -82,7 +82,7 @@ namespace DatingApp.Controllers
 
 
 
-            var tokenString = JwtTokenHelper.GetTokenByUserIdAndName(userLogin.UserId.ToString(), userLogin.Username, _configuration.GetSection("AppSettings:Token").Value);
+            var tokenString = JwtTokenHelper.GetTokenByUserIdAndName(userLogin.Id.ToString(), userLogin.Username, _configuration.GetSection("AppSettings:Token").Value);
 
 
             return Ok(new { tokenString });

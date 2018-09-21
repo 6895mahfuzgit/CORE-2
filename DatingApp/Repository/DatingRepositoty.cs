@@ -41,7 +41,7 @@ namespace DatingApp.Repository
 
             var user = await _context.Users
                                .Include(u => u.Photos)
-                               .FirstOrDefaultAsync(u => u.UserId == userId);
+                               .FirstOrDefaultAsync(u => u.Id == userId);
 
             return user;
         }
@@ -50,7 +50,7 @@ namespace DatingApp.Repository
         {
             var users = await _context.Users
                                 .Include(u => u.Photos)
-                                .OrderByDescending(o=>o.UserId)                                
+                                .OrderByDescending(o=>o.Id)                                
                                 .ToListAsync();
 
 

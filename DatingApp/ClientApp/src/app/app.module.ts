@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
 
+
 import { AuthService } from './_services/auth.service';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +24,11 @@ import { MessagesComponent } from '../../messages/messages.component';
 import { appRoutes } from './routes';
 import { AuthGuard } from './_guard/auth.guard';
 import { MemberCardComponent } from '../../members/member-card/member-card.component';
+import { JwtHelper } from 'angular2-jwt';
+import { MemberDetailComponent } from '../../members/member-detail/member-detail.component';
+
+
+
 
 
 
@@ -37,16 +43,20 @@ import { MemberCardComponent } from '../../members/member-card/member-card.compo
     ListsComponent,
     MemberListComponent,
     MessagesComponent,
-    MemberCardComponent
-    
-    
+    MemberCardComponent,
+    MemberDetailComponent
+
+
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule,
+
+
   ],
   providers: [
     AuthService,
@@ -54,10 +64,10 @@ import { MemberCardComponent } from '../../members/member-card/member-card.compo
     UserService,
     AuthGuard,
 
-    
+
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  
+
 }

@@ -3,6 +3,7 @@ import { map, catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
+import { environment } from '../../environments/environment';
 
 
 
@@ -11,7 +12,8 @@ import { tokenNotExpired, JwtHelper } from 'angular2-jwt';
 @Injectable()
 export class AuthService {
 
-  baseUrl = "http://localhost:15406/api/Auth/";
+  baseUrl = environment.apiUrl + 'Auth/';
+  
   userToken: any;
   decodeToken: any;
   jwtHelper: JwtHelper = new JwtHelper();

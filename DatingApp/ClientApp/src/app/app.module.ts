@@ -29,7 +29,7 @@ import { MemberDetailComponent } from '../../members/member-detail/member-detail
 
 import { MemberDetailsResolver } from './_resolver/member-details.resolver';
 import { MembersListResolver } from './_resolver/members-list.resolver';
-
+import { NgxGalleryModule } from 'ngx-gallery';
 
 
 
@@ -59,7 +59,8 @@ import { MembersListResolver } from './_resolver/members-list.resolver';
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    NgxGalleryModule
 
   ],
   providers: [

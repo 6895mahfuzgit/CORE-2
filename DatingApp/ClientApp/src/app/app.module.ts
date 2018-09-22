@@ -9,7 +9,7 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { BsDropdownModule } from 'ngx-bootstrap';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 
 
 
@@ -44,7 +44,8 @@ import { MemberDetailComponent } from '../../members/member-detail/member-detail
     MemberListComponent,
     MessagesComponent,
     MemberCardComponent,
-    MemberDetailComponent
+    MemberDetailComponent,
+    
 
 
   ],
@@ -55,7 +56,7 @@ import { MemberDetailComponent } from '../../members/member-detail/member-detail
     BsDropdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     HttpClientModule,
-
+    TabsModule.forRoot()
 
   ],
   providers: [

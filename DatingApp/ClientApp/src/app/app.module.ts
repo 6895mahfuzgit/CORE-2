@@ -27,6 +27,9 @@ import { MemberCardComponent } from '../../members/member-card/member-card.compo
 import { JwtHelper } from 'angular2-jwt';
 import { MemberDetailComponent } from '../../members/member-detail/member-detail.component';
 
+import { MemberDetailsResolver } from './_resolver/member-details.resolver';
+import { MembersListResolver } from './_resolver/members-list.resolver';
+
 
 
 
@@ -64,7 +67,8 @@ import { MemberDetailComponent } from '../../members/member-detail/member-detail
     AlertifyService,
     UserService,
     AuthGuard,
-
+    MemberDetailsResolver,
+    MembersListResolver,
 
   ],
   bootstrap: [AppComponent]

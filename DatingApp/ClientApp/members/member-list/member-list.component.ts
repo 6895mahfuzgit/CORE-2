@@ -3,6 +3,7 @@ import { error } from 'protractor';
 import { User } from '../../src/app/_models/user';
 import { UserService } from '../../src/app/_services/user.service';
 import { AlertifyService } from '../../src/app/_services/alertify.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-member-list',
@@ -17,28 +18,19 @@ export class MemberListComponent implements OnInit {
 
   users: User[];
 
-  constructor(private userService: UserService, private aletify: AlertifyService) {
+  constructor(private userService: UserService, private aletify: AlertifyService,private route:ActivatedRoute) {
 
   }
 
 
   ngOnInit() {
-    this.loadUsers();
-  }
-
-
-  loadUsers() {
-
-    this.userService.getAllUsers().subscribe((users: User[]) => {
-
-      this.users = users;
-
-    }, error => {
-
-      this.aletify.error(error);
+    this.route.data.subscribe(data => {
+      this.users = data['users'];
 
     });
+  }
 
+  
   }
 
 
